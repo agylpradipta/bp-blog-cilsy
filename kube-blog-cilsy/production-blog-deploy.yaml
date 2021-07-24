@@ -7,6 +7,7 @@ metadata:
     app: blog-deployment
 spec:
   replicas: 3
+  revisionHistoryLimit: 5
   selector:
     matchLabels:
       app: blog-deployment
@@ -15,9 +16,11 @@ spec:
       labels:
         app: blog-deployment
     spec:
+      terminationGracePeriodSeconds: 30
       containers:
       - name: blog-deployment
         image: jasnicahuang/blog:latest
+        imagePullPolicy: "Always"
         ports:
         - containerPort: 80
 ---
