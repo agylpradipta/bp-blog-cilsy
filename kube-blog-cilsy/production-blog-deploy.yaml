@@ -7,6 +7,7 @@ metadata:
     app: blog-deployment
 spec:
   replicas: 3
+  revisionHistoryLimit: 5
   selector:
     matchLabels:
       app: blog-deployment
@@ -15,9 +16,11 @@ spec:
       labels:
         app: blog-deployment
     spec:
+      terminationGracePeriodSeconds: 30
       containers:
       - name: blog-deployment
         image: jasnicahuang/blog:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
 ---
@@ -45,9 +48,9 @@ metadata:
   annotations:
      kubernetes.io/ingress.class: "nginx"
      nginx.ingress.kubernetes.io/affinity: "cookie"
-     nginx.ingress.kubernetes.io/session-cookie-name: "blog-prod-cookie"
-     nginx.ingress.kubernetes.io/session-cookie-expires: "86400"
-     nginx.ingress.kubernetes.io/session-cookie-max-age: "86400"
+     nginx.ingress.kubernetes.io/session-cookie-name: "goodbye-cookie"
+     nginx.ingress.kubernetes.io/session-cookie-expires: "172800"
+     nginx.ingress.kubernetes.io/session-cookie-max-age: "172800"
      nginx.ingress.kubernetes.io/ssl-redirect: "false"
      nginx.ingress.kubernetes.io/affinity-mode: persistent
      nginx.ingress.kubernetes.io/session-cookie-hash: sha1
