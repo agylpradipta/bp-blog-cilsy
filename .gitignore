@@ -1,2 +1,3 @@
 # ignore the file literally named wp_config.php
-wp_config.php
+#wp_config.php
+.zip
