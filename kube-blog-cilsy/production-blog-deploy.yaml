@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: production
+  name: blog-deployment
+  labels:
+    app: blog-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: blog-deployment
+  template:
+    metadata:
+      labels:
+        app: blog-deployment
+    spec:
+      containers:
+      - name: blog-deployment
+        image: jasnicahuang/blog:latest
+        ports:
+        - containerPort: 80
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  namespace: production      
+  name: blog-service
+spec:
+  selector:
+    app: blog-deployment
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+
+---
+
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  namespace: production
+  name: blog-ingress
+  annotations:
+     kubernetes.io/ingress.class: "nginx"
+     nginx.ingress.kubernetes.io/affinity: "cookie"
+     nginx.ingress.kubernetes.io/session-cookie-name: "blog-prod-cookie"
+     nginx.ingress.kubernetes.io/session-cookie-expires: "86400"
+     nginx.ingress.kubernetes.io/session-cookie-max-age: "86400"
+     nginx.ingress.kubernetes.io/ssl-redirect: "false"
+     nginx.ingress.kubernetes.io/affinity-mode: persistent
+     nginx.ingress.kubernetes.io/session-cookie-hash: sha1
+spec:
+  rules:
+  - host: blog.jasnicahuang.xyz      
+    http:
+      paths:
+        - backend:
+             serviceName: blog-service
+             servicePort: 80
+
