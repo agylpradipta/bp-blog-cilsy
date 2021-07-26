@@ -19,7 +19,7 @@ spec:
       terminationGracePeriodSeconds: 30
       containers:
       - name: blog-deployment
-        image: jasnicahuang/blog:latest
+        image: starlord345/blog:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 80
@@ -56,7 +56,7 @@ metadata:
      nginx.ingress.kubernetes.io/session-cookie-hash: sha1
 spec:
   rules:
-  - host: blog.jasnicahuang.xyz      
+  - host: blog.agylpradipta.xyz     
     http:
       paths:
         - backend:
