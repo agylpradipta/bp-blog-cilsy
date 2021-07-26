@@ -20,23 +20,23 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'blog_staging');
+define('DB_NAME', 'local_cilsy');
 
 /** MySQL database username */
-define('DB_USER', 'admin');
+define('DB_USER', 'root');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'admin-cilsy');
+define('DB_PASSWORD', 'bismillah');
 
 /** MySQL hostname */
-define('DB_HOST', 'database-wordpress.cmaic43kllui.ap-southeast-1.rds.amazonaws.com');
+define('DB_HOST', 'localhost');
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8mb4');
 
 /** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
-define('WP_ALLOW_REPAIR', true)
+define('WP_ALLOW_REPAIR', true);
 
 /**#@+
  * Authentication Unique Keys and Salts.
@@ -47,6 +47,7 @@ define('WP_ALLOW_REPAIR', true)
  *
  * @since 2.6.0
  */
+
 define('AUTH_KEY',         'F.qHW25F>ipT&fqXwj`I*Zq:(;<,>_<mDCgBc(UZHf|NTlJ(|2:Fc^Y:R@9V0u<c');
 define('SECURE_AUTH_KEY',  '+,W{!v7NJ$|@g;|D<:Yfr4qZLI/{n1FI8<^!sCuht]|O=j[|+[+$!z~.#u^.vhUI');
 define('LOGGED_IN_KEY',    '][_g=C{yHp#|8?uw|6`v6h.R_:z9nT):re4(1Sc*,|Dej8<LamO)xt{Z?^n?x[]w');
