@@ -1,6 +1,8 @@
 # BEGIN WordPress
 <IfModule mod_rewrite.c>
 RewriteEngine On
+AllowOverride All
+allow from all
 RewriteBase /
 RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
